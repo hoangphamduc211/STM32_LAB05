@@ -1,0 +1,4 @@
+global.c:17:6:display7SEG	16	static
+global.c:121:6:displayNum	16	static
+global.c:159:6:task1	8	static
+global.c:166:6:initial	8	static
