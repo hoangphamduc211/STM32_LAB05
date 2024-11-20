@@ -1,0 +1,105 @@
+/*
+ * displayLCD.c
+ *
+ *  Created on: Nov 16, 2024
+ *      Author: LENOVO
+ */
+#include<global.h>
+
+int buffer[4] = {0,0,0,0};
+void displayNum(){
+	switch (status){
+	case AUTO_RED:
+		automatic_display();
+		break;
+	case AUTO_GREEN:
+		automatic_display();
+		break;
+	case AUTO_AMBER:
+		automatic_display();
+		break;
+	case MAN_RED:
+		manual_display();
+		break;
+	case MAN_GREEN:
+		manual_display();
+		break;
+	case MAN_AMBER:
+		manual_display();
+		break;
+	default:
+		break;
+	}
+}
+void automatic_display(){
+//	lcd_clear();
+	buffer[0] = counter0;
+	buffer[1] = counter1;
+
+	lcd_put_cur(0, 0);
+	lcd_send_string("AUTOMATIC MODE");
+	char str1[20];
+	char str2[20];
+	switch(buffer[2]){
+	case 0:
+		sprintf(str1,"RED:  %d%d",buffer[0]/10, buffer[0]%10);
+		break;
+	case 1:
+		sprintf(str1,"GREEN:%d%d",buffer[0]/10, buffer[0]%10);
+		break;
+	case 2:
+		sprintf(str1,"AMBER:%d%d",buffer[0]/10, buffer[0]%10);
+		break;
+	default:
+		break;
+	}
+	switch(buffer[3]){
+	case 0:
+		sprintf(str2,"RED:  %d%d",buffer[1]/10, buffer[1]%10);
+		break;
+	case 1:
+		sprintf(str2,"GREEN:%d%d",buffer[1]/10, buffer[1]%10);
+		break;
+	case 2:
+		sprintf(str2,"AMBER:%d%d",buffer[1]/10, buffer[1]%10);
+	}
+	lcd_put_cur(1, 0);
+	lcd_send_string(str1);
+	lcd_put_cur(1, 8);
+	lcd_send_string(str2);
+}
+void manual_display(){
+//	lcd_clear();
+	lcd_send_string("MANUAL MODE");
+	char str1[20];
+	char str2[20];
+	buffer[0] = counter0;
+	buffer[1] = counter1;
+	switch(buffer[2]){
+	case 0:
+		sprintf(str1,"RED:  %d%d",buffer[0]);
+		break;
+	case 1:
+		sprintf(str1,"GREEN:%d%d",buffer[0]);
+		break;
+	case 2:
+		sprintf(str1,"AMBER:%d%d",buffer[0]);
+		break;
+	default:
+		break;
+	}
+	switch(buffer[2]){
+	case 0:
+		sprintf(str2,"MODE: %d%d",buffer[1]);
+		break;
+	case 1:
+		sprintf(str2,"MODE: %d%d",buffer[1]);
+		break;
+	case 2:
+		sprintf(str2,"MODE: %d%d",buffer[1]);
+	}
+	lcd_put_cur(1, 0);
+	lcd_send_string(str1);
+	lcd_put_cur(1, 8);
+	lcd_send_string(str2);
+}

@@ -1,0 +1,23 @@
+05:09:47 **** Incremental Build of configuration Debug for project Lab5 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/time_set.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/time_set.d" -MT"Core/Src/time_set.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/time_set.o"
+arm-none-eabi-gcc -o "Lab5.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\Git\Github_folder\STM32_LAB05\Lab5\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab5.elf
+ 
+arm-none-eabi-size   Lab5.elf 
+arm-none-eabi-objdump -h -S  Lab5.elf  > "Lab5.list"
+arm-none-eabi-objcopy  -O ihex  Lab5.elf  "Lab5.hex"
+   text	   data	    bss	    dec	    hex	filename
+  16556	    136	   1864	  18556	   487c	Lab5.elf
+arm-none-eabi-objcopy  -O binary  Lab5.elf  "Lab5.bin"
+Finished building: default.size.stdout
+ 
+Finished building: Lab5.hex
+Finished building: Lab5.bin
+ 
+ 
+Finished building: Lab5.list
+ 
+
+05:09:48 Build Finished. 0 errors, 0 warnings. (took 736ms)
+

@@ -1,9 +1,0 @@
-scheduler.c:9:7:createNode	32	static
-scheduler.c:24:7:createDefaultNode	16	static
-scheduler.c:29:11:createDefaultSCH	16	static
-scheduler.c:37:6:SCH_init	8	static
-scheduler.c:44:6:SCH_deleteHead	16	static
-scheduler.c:62:6:SCH_deleteTask	24	static
-scheduler.c:83:6:SCH_addTask	56	static
-scheduler.c:125:6:SCH_updateTask	4	static
-scheduler.c:137:6:SCH_dispatchTask	16	static
